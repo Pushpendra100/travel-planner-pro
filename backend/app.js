@@ -7,7 +7,6 @@ const errorMiddleware = require("./middlewares/error");
 
 const corsOption = {
   credentials: true,
-  origin: [process.env.FRONT_URL],
 };
 const app = express();
 

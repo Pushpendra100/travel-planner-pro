@@ -9,6 +9,7 @@ const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const { isAuthenticated, user } = useSelector((state) => state.user);
   const { loading, destin } = useSelector((state) => state.destin);
 
   useEffect(() => {
@@ -18,19 +19,27 @@ const Home = () => {
   return (
     <Fragment>
       <MetaData title="Travel-Planner | Home" />
-      <div className="homePage">
-        {!loading && (
-          <Fragment>
-            {destin &&
-              destin.map((dest, i) => (
-                <div className="destinCard" key={i}>
-                  {console.log(dest)}
-                  <h1>{dest.name}</h1>
-                </div>
-              ))}
-          </Fragment>
-        )}
-      </div>
+      {!loading ? (
+        <Fragment>
+          <h1>Home</h1>
+          {isAuthenticated ? (
+            <div className="homePage">
+              {!loading && (
+                <Fragment>
+                  {destin &&
+                    destin.map((dest, i) => (
+                      <div className="destinCard" key={i}>
+                        <h1>{dest.name}</h1>
+                      </div>
+                    ))}
+                </Fragment>
+              )}
+            </div>
+          ) : (
+            <p>you are not authenticated bro</p>
+          )}
+        </Fragment>
+      ) : null}
     </Fragment>
   );
 };

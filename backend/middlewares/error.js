@@ -1,4 +1,4 @@
-const ErrorHandler = require("../utils/errorHander");
+const ErrorHandler = require("../utils/errorhander.js");
 
 module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
@@ -12,7 +12,7 @@ module.exports = (err, req, res, next) => {
 
   // Mongoose duplicate key error
   if (err.code === 11000) {
-    const message = `Duplicate ${Object.keys(err.keyValue)} entered`;
+    const message = `This ${Object.keys(err.keyValue)} already exists`;
     err = new ErrorHandler(message, 400);
   }
 

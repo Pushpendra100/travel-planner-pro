@@ -50,6 +50,7 @@ const userSchema = new mongoose.Schema({
     minlength: [8, "password should have minimum 8 characters"],
     select: false,
   },
+  home_town: String,
   dCardCreated: [dCardSchema],
   savedInBlock: [
     {
